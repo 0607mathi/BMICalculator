@@ -7,7 +7,7 @@ export const BmiCalculator = () => {
             height:"",
             weight:"",
             bmiValue:"00",
-            status:"Normal"
+            status:"--"
         }
     )
 
