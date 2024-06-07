@@ -46,6 +46,10 @@ h1{
     color: rgb(83,201,247);
 }
 
+.formError{
+    color: red;
+}
+
 .calculator>:nth-child(2)>label{
     font-weight: 500;
 }

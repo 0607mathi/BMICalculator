@@ -7,7 +7,9 @@ export const BmiCalculator = () => {
             height:"",
             weight:"",
             bmiValue:"00",
-            status:"--"
+            status:"--",
+            formErrorMessage:false,
+            resultVisible:false
         }
     )
 
@@ -19,6 +21,19 @@ export const BmiCalculator = () => {
 
         let Weigth = bmivalues.weight
         let Height = bmivalues.height
+        let isError = bmivalues.formErrorMessage
+        let resultVisible = bmivalues.resultVisible
+
+        // form Validation
+        if(Weigth==""&&Height==""){ 
+            isError=true
+            resultVisible=false
+        }
+
+        else{ 
+            isError=false
+            resultVisible=true
+        } 
 
         //converts meters
         Height/=100 
@@ -39,7 +54,8 @@ export const BmiCalculator = () => {
             Bmi_status="Obese"
         }
 
-        setBmivalues({...bmivalues,bmiValue:formula, status:Bmi_status})
+
+        setBmivalues({...bmivalues,bmiValue:formula, status:Bmi_status, resultVisible:resultVisible, formErrorMessage:isError})
     }
 
     const ClearButton = () =>{
@@ -47,7 +63,9 @@ export const BmiCalculator = () => {
             height:"",
             weight:"",
             bmiValue:"00",
-            status:"Normal"
+            status:"--",
+            formErrorMessage:false,
+            resultVisible:false
         })
     }
 
@@ -59,6 +77,7 @@ export const BmiCalculator = () => {
             <div className="calculator">
                 <h1>BMI Calculator</h1>
                 <div>
+                    {bmivalues.formErrorMessage && <p className='formError'>Please Kindly Enter all the Details</p>}
                     <label htmlFor="height">Height (Cm) :</label>
                     <input type="text" id='height' name='height' value={bmivalues.height}  onChange={Value}/>
                     <label htmlFor="weight">Weight (Kg) :</label>
@@ -68,10 +87,10 @@ export const BmiCalculator = () => {
                         <button className='btn-2' onClick={ClearButton}>Clear</button>
                     </div>
                 </div>
-                <div className="result">
+                { bmivalues.resultVisible &&  <div className="result">
                     <p>Your BMI Value is : {bmivalues.bmiValue}</p>
                     <p>Status : {bmivalues.status}</p>
-                </div>
+                </div> }
             </div>
         </div>
   )
