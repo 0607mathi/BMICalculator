@@ -119,6 +119,11 @@ button{
     margin-bottom: 1%;
 }
 
+.result>.error{
+    font-weight: 500;
+    color: rgb(18, 178, 241);
+}
+
 @media (max-width:424px){
     .calculator>:nth-child(2)>input{
         padding: 8px 1%;

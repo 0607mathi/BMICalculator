@@ -74,7 +74,7 @@ export const BmiCalculator = () => {
   return (
     <div className="container">
       <div className="bmi-image">
-        <img src="body-mass-index.avif" alt="bmi images" />
+        <img src="body-mass-index.avif" alt="bmi images"/>
       </div>
       <div className="calculator">
         <h1>BMI Calculator</h1>
@@ -84,17 +84,20 @@ export const BmiCalculator = () => {
           }
           <label htmlFor="height">Height (Cm) :</label>
           <input
-            type="text"
+            type="number"
             id="height"
             name="height"
+            placeholder="Enter your height in cm"
             value={bmivalues.height}
             onChange={Value}
+            
           />
           <label htmlFor="weight">Weight (Kg) :</label>
           <input
-            type="text"
+            type="number"
             id="weight"
             name="weight"
+            placeholder="Enter your weight in kg"
             value={bmivalues.weight}
             onChange={Value}
           />
@@ -109,7 +112,7 @@ export const BmiCalculator = () => {
         </div>
         {bmivalues.resultVisible && (
           <div className="result">
-            <p>Your BMI Value is : {bmivalues.bmiValue}</p>
+            <p className="error">Your BMI Value is : {bmivalues.bmiValue}</p>
             <p>Status : {bmivalues.status}</p>
           </div>
         )}
