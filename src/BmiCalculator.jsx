@@ -31,6 +31,7 @@ export const BmiCalculator = () => {
     } else {
       isError = true;
       Result = false;
+      setBmivalues({...bmivalues,formErrorMessage:isError})
     }
   };
 
@@ -53,11 +54,11 @@ export const BmiCalculator = () => {
       ...bmivalues,
       bmiValue: formula,
       status: Bmi_status,
-      formErrorMessage: isError,
-      resultVisible: Result,
+      resultVisible: Result
     }));
-    // console.log("setted",bmivalues)
+    // console.log("setted",bmivalues.isError)
   };
+
 
   const ClearButton = () => {
     setBmivalues({
@@ -78,9 +79,9 @@ export const BmiCalculator = () => {
       <div className="calculator">
         <h1>BMI Calculator</h1>
         <div>
-          {bmivalues.formErrorMessage && (
+          {bmivalues.formErrorMessage && 
             <p className="formError">Please Kindly Enter all the Details</p>
-          )}
+          }
           <label htmlFor="height">Height (Cm) :</label>
           <input
             type="text"
